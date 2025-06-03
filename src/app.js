@@ -1,10 +1,9 @@
 import express, { urlencoded } from "express";
-import { healthRouter } from "./routes/health/health.route.js";
-import { indexRouter } from "./routes/index.route.js";
+import router from "./routes/router.js";
 
 export const app = express();
 
+app.use(express.static("public"));
 app.use(urlencoded({ extended: true }));
 
-app.use("/", indexRouter);
-app.use("/health", healthRouter);
+app.use(router);
