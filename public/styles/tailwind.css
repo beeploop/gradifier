@@ -6,6 +6,10 @@
     --color-primary-light: var(--color-amber-300);
 }
 
+[x-cloak] {
+    display: none !important;
+}
+
 .active {
     background-color: var(--color-white);
     opacity: 0.75;

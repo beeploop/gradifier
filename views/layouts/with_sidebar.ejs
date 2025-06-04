@@ -4,37 +4,52 @@
 <%- include('../partials/header.ejs') %>
 
     <body>
-        <main class="grid grid-cols-12 min-h-screen gap-2" id="main">
+        <main class="grid min-h-screen grid-cols-12 gap-2" id="main">
             <aside
-                class="col-span-2 outline outline-1 outline-gray-300 p-2 rounded-sm bg-primary text-black flex flex-col my-2 ml-2">
+                class="col-span-2 my-2 ml-2 flex flex-col rounded-sm bg-primary p-2 text-black outline outline-1 outline-gray-300">
                 <div id="sidebar" class="flex-1">
-                    <li class="list-none mb-2" data-id="dashboard">
-                        <a class="inline-block w-full hover:bg-white/45 p-2" href="/app/dashboard">Dashboard</a>
+                    <li class="mb-2 list-none" data-id="dashboard">
+                        <a class="inline-block w-full p-2 hover:bg-white/45" href="/app/dashboard">Dashboard</a>
                     </li>
-                    <li class="list-none mb-2" data-id="reports">
-                        <a class="inline-block w-full hover:bg-white/45 p-2" href="/app/reports">Reports</a>
+                    <li class="mb-2 list-none" data-id="reports">
+                        <a class="inline-block w-full p-2 hover:bg-white/45" href="/app/reports">Reports</a>
                     </li>
-                    <li class="list-none mb-2" data-id="logs">
-                        <a class="inline-block w-full hover:bg-white/45 p-2" href="/app/logs">Logs</a>
+                    <li class="mb-2 list-none" data-id="logs">
+                        <a class="inline-block w-full p-2 hover:bg-white/45" href="/app/logs">Logs</a>
                     </li>
-                    <li class="list-none mb-2" data-id="settings">
-                        <a class="inline-block w-full hover:bg-white/45 p-2" href="/app/settings">Settings</a>
+                    <li class="mb-2 list-none" data-id="settings">
+                        <a class="inline-block w-full p-2 hover:bg-white/45" href="/app/settings">Settings</a>
                     </li>
                 </div>
-                <div class="flex items-center gap-2 cursor-pointer hover:bg-white/45 p-2">
-                    <img src="<%= user.imageUrl %>" alt="user image"
-                        class="aspect-square w-10 h-10 rounded-full outline outline-1 outline-neutral-400 bg-neutral-300" />
-                    <div class="text-xs font-medium">
-                        <p>
-                            <%= user.name || "firstname lastname" %>
-                        </p>
-                        <p class="text-neutral-600">
-                            <%= user.email || "user@email.com" %>
-                        </p>
+                <div x-data="{isOpen: false, openedWithKeyboard: false}" class="relative"
+                    x-on:keydown.esc.window="isOpen = false, openedWithKeyboard = false">
+                    <div class="flex cursor-pointer items-center gap-2 p-2 hover:bg-white/45"
+                        x-on:click="isOpen = !isOpen" x-on:keydown.enter.prevent="openedWithKeyboard = true"
+                        x-on:keydown.down.prevent="openedWithKeyboard = true">
+                        <img src="<%= user.imageUrl %>" alt="user image"
+                            class="aspect-square h-10 w-10 rounded-full bg-neutral-300 outline outline-1 outline-neutral-400" />
+                        <div class="text-xs font-medium">
+                            <p>
+                                <%= user.name || "firstname lastname" %>
+                            </p>
+                            <p class="text-neutral-600">
+                                <%= user.email || "user@email.com" %>
+                            </p>
+                        </div>
+                    </div>
+                    <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard"
+                        x-on:click.outside="isOpen = false, openedWithKeyboard = false"
+                        x-on:keydown.down.prevent="$focus.wrap().next()"
+                        x-on:keydown.up.prevent="$focus.wrap().previous()" role="menu"
+                        class="absolute bottom-0 left-full ml-1 flex w-fit min-w-48 flex-col rounded-sm bg-white p-2 outline-1 outline-neutral-400">
+                        <form action="/auth/logout" method="POST">
+                            <button type="submit"
+                                class="w-full cursor-pointer bg-red-500/25 hover:bg-red-600/30 px-2 py-1.5 text-red-500">Logout</button>
+                        </form>
                     </div>
                 </div>
             </aside>
-            <div class="p-2 rounded-sm outline outline-1 outline-neutral-300 col-span-10 my-2 mr-2 bg-white">
+            <div class="col-span-10 my-2 mr-2 rounded-sm bg-white p-2 outline outline-1 outline-neutral-300">
                 <%- body %>
             </div>
         </main>

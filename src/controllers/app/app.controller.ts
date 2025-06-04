@@ -19,22 +19,22 @@ export class AppController {
     }
 
     renderDashboard(req: Request, res: Response) {
-        const locals = this.buildLocals(req);
+        const locals = this.buildLocals(req, { banner: "Dashboard" });
         res.render("pages/app/dashboard", locals)
     }
 
     renderReports(req: Request, res: Response) {
-        const locals = this.buildLocals(req);
+        const locals = this.buildLocals(req, { banner: "Reports" });
         res.render("pages/app/reports", locals);
     }
 
     renderLogs(req: Request, res: Response) {
-        const locals = this.buildLocals(req);
+        const locals = this.buildLocals(req, { banner: "Logs" });
         res.render("pages/app/logs", locals);
     }
 
     renderSettings(req: Request, res: Response) {
-        const locals = this.buildLocals(req);
+        const locals = this.buildLocals(req, { banner: "Settings" });
         res.render("pages/app/settings", locals);
     }
 
