@@ -4,16 +4,24 @@
 <%- include('../partials/header.ejs') %>
 
     <body>
-        <main>
-            <aside>
-                <li> <a href="/app/dashboard">Dashboard</a> </li>
-                <li> <a href="/app/reports">Reports</a> </li>
-                <li> <a href="/app/settings">Settings</a> </li>
+        <main class="grid grid-cols-12 min-h-screen">
+            <aside class="col-span-2 outline outline-1 outline-gray-300 p-2 m-2 rounded-sm bg-yellow-600/25 text-black"
+                id="sidebar">
+                <li class="list-none mb-2" data-id="dashboard">
+                    <a class="inline-block w-full hover:bg-yellow-300/50 p-2" href="/app/dashboard">Dashboard</a>
+                </li>
+                <li class="list-none mb-2" data-id="reports">
+                    <a class="inline-block w-full hover:bg-yellow-300/50 p-2" href="/app/reports">Reports</a>
+                </li>
+                <li class="list-none mb-2" data-id="settings">
+                    <a class="inline-block w-full hover:bg-yellow-300/50 p-2" href="/app/settings">Settings</a>
+                </li>
             </aside>
-            <div>
+            <div class="p-2">
                 <%- body %>
             </div>
         </main>
     </body>
+    <script src="/scripts/sidebar.js"></script>
 
 </html>

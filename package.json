@@ -4,15 +4,18 @@
   "description": "gradifier web interface",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
-    "start": "npx tsc && node dist/index.js",
-    "dev": "tsx watch --tsconfig ./tsconfig.json ./src/index.ts",
+    "build": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/style.css && npx tsc",
+    "start": "node dist/index.js",
+    "dev": "npx tsx watch --tsconfig ./tsconfig.json ./src/index.ts",
+    "tailwind:build": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/style.css",
+    "tailwind:dev": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/style.css --watch",
     "db:push": "npx drizzle-kit push",
     "db:studio": "npx drizzle-kit studio --port=3100"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.8",
     "bcrypt": "^6.0.0",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.44.2",
@@ -21,7 +24,8 @@
     "express-ejs-layouts": "^2.5.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.18.1",
-    "mysql2": "^3.14.1"
+    "mysql2": "^3.14.1",
+    "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

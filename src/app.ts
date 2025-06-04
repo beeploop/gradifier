@@ -25,7 +25,7 @@ app.use(
         saveUninitialized: false,
         resave: false,
         cookie: {
-            maxAge: 60000,
+            maxAge: 1000 * 60 * 60 * 60 * 24, // 1 day
             sameSite: "lax",
         },
     }),
