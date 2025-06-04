@@ -4,8 +4,11 @@ export class IndexController {
    * @param {import('express').Response} res
    */
   execute(_req, res) {
-    res.json({
-      greeting: "hello world",
-    });
+    /** @type {{title: string}} */
+    const locals = {
+      title: "Gradifier",
+    };
+
+    res.render("pages/index", locals);
   }
 }

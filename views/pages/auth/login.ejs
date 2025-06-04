@@ -1,0 +1,18 @@
+<div>
+    <div class="">
+        <% if (flash) { %>
+            <div>
+                <%= flash[0] %>
+            </div>
+            <% } %>
+    </div>
+    <form action="/auth/login" method="POST">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" autofocus autocomplete="off" required />
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
