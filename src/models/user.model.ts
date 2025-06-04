@@ -1,8 +1,8 @@
-import { BCrypt } from "../utils/bcrypt";
-
 type TUser = {
     id: string,
+    name: string,
     email: string,
+    imageUrl: string | null,
     password: string,
     createdAt: Date,
     updatedAt: Date,
@@ -10,14 +10,18 @@ type TUser = {
 
 export class UserModel {
     id: string;
+    name: string;
     email: string;
+    imageUrl: string | null;
     password: string;
     createdAt: Date;
     updatedAt: Date;
 
     constructor(user: TUser) {
         this.id = user.id;
+        this.name = user.name;
         this.email = user.email;
+        this.imageUrl = user.imageUrl;
         this.password = user.password;
         this.createdAt = user.createdAt;
         this.updatedAt = user.updatedAt;
@@ -27,19 +31,19 @@ export class UserModel {
         return new UserModel(user);
     }
 
-    static createNew(email: string, password: string) {
-        const hashed = new BCrypt().hash(password);
-
+    static createNew(name: string, email: string, password: string) {
         return new UserModel({
             id: crypto.randomUUID(),
+            name: name,
             email: email,
-            password: hashed,
+            imageUrl: "",
+            password: password,
             createdAt: new Date(),
             updatedAt: new Date(),
         });
     }
 
     isCorrectPassword(password: string): boolean {
-        return new BCrypt().comparePassword(password, this.password);
+        return this.password === password;
     }
 }

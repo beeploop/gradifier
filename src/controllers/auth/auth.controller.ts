@@ -30,7 +30,12 @@ export class AuthController {
             }
 
             const user = await this.authService.login(email, password);
-            req.session.user = { id: user.id, email: user.email };
+            req.session.user = {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                imageUrl: user.imageUrl,
+            };
 
             res.redirect("/app/dashboard");
         } catch (err) {
