@@ -14,4 +14,5 @@ appRouter.use((_req: Request, res: Response, next: NextFunction) => {
 
 appRouter.get("/dashboard", controller.renderDashboard);
 appRouter.get("/reports", controller.renderReports);
+appRouter.get("/logs", controller.renderLogs);
 appRouter.get("/settings", controller.renderSettings);

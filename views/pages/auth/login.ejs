@@ -1,18 +1,31 @@
-<div>
+<div class="grid place-items-center min-h-screen">
     <div class="">
-        <% if (flash) { %>
-            <div>
-                <%= flash[0] %>
-            </div>
-            <% } %>
-    </div>
-    <form action="/auth/login" method="POST">
         <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" autofocus autocomplete="off" required />
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required />
-            <button type="submit">Submit</button>
+            <% if (Array.isArray(flash) && flash.length> 0 && flash[0].trim() !== "") { %>
+                <div class="mb-2 text-red-500 bg-red-500/25 outline outline-1 outline-red-500 rounded-sm p-2">
+                    <%= flash[0] %>
+                </div>
+                <% } %>
         </div>
-    </form>
+        <form action="/auth/login" method="POST" class="outline outline-1 outline-neutral-400 rounded-sm p-4">
+            <div class="grid gap-2">
+                <div>
+                    <label for="email">Email:</label>
+                    <br />
+                    <input type="email" name="email" id="email" autofocus autocomplete="off" required
+                        placeholder="user@email.com" class="outline outline-1 outline-neutral-400 rounded-sm p-2" />
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <br />
+                    <input type="password" name="password" id="password" required placeholder="password"
+                        class="outline outline-1 outline-neutral-400 rounded-sm p-2" />
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit"
+                        class="bg-yellow-600 rounded-sm px-2 py-1.5 hover:opacity-75 cursor-pointer">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
