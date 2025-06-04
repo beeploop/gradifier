@@ -1,10 +1,24 @@
+import { UserModel } from "../../models/user.model";
+import { UserRepository } from "../../repositories/user.repository";
+
 export class AuthService {
-    async login(email: string, password: string) {
-        if (email !== "admin@email.com" || password != "password") {
+    repository: UserRepository;
+
+    constructor() {
+        this.repository = new UserRepository();
+    }
+
+    async login(email: string, password: string): Promise<UserModel> {
+        const user = await this.repository.findByEmail(email);
+        if (!user) {
+            throw new Error("user not found");
+        }
+
+        if (!user.isCorrectPassword(password)) {
             throw new Error("invalid credentials");
         }
 
-        console.log({ email, password });
+        return user;
     }
 
     async logout() {

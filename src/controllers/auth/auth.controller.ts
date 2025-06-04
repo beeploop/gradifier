@@ -29,9 +29,8 @@ export class AuthController {
                 throw new Error("invalid input");
             }
 
-            await this.authService.login(email, password);
-            req.session.user = { id: crypto.randomUUID(), email: email };
-
+            const user = await this.authService.login(email, password);
+            req.session.user = { id: user.id, email: user.email };
 
             res.redirect("/app/dashboard");
         } catch (err) {

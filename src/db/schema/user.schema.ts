@@ -4,6 +4,6 @@ export const userTable = mysqlTable("user", {
     id: varchar({ length: 255 }).primaryKey(),
     email: varchar({ length: 255 }).notNull().unique(),
     password: varchar({ length: 255 }).notNull(),
-    createdAt: timestamp().defaultNow(),
-    updatedAt: timestamp().defaultNow().onUpdateNow(),
+    createdAt: timestamp().notNull().defaultNow(),
+    updatedAt: timestamp().notNull().defaultNow().onUpdateNow(),
 });
