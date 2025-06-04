@@ -1,3 +1,8 @@
 node_modules
-*.env
+
 dist
+mysql
+drizzle
+
+.env
+*.txt
