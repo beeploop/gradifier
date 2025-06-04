@@ -30,12 +30,20 @@
 npm install
 ```
 
-2. Push database schema
+2. Setup `.env`
+    - Create `.env` file at the root
+    - Refer to `.example.env` for the content
+
+    - If using docker
+        - Create `.db.env` file at the root
+        - Refer to `.db.example.env` for the content
+
+3. Push database schema
 ```bash
 npm run db:push
 ```
 
-3. Run development
+4. Run development
 ```bash
 npm run dev
 ```
