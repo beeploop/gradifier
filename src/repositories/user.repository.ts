@@ -31,4 +31,14 @@ export class UserRepository {
             return null;
         }
     }
+
+    async save(user: UserModel): Promise<void> {
+        try {
+            await db.update(userTable)
+                .set(user)
+                .where(eq(userTable.id, user.id));
+        } catch (error) {
+            console.log("error updating user: ", error)
+        }
+    }
 }

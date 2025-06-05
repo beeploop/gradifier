@@ -46,4 +46,9 @@ export class UserModel {
     isCorrectPassword(password: string): boolean {
         return this.password === password;
     }
+
+    changeProfile(filepath: string): void {
+        this.imageUrl = filepath;
+        this.updatedAt = new Date();
+    }
 }

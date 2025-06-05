@@ -1,5 +1,5 @@
-<form action="/app/changeProfile" method="POST" enctype="multipart/form-data">
-    <label for="File"
+<form action="/app/profile/changeProfile" method="POST" enctype="multipart/form-data">
+    <label for="file"
         class="flex flex-col items-center rounded border border-gray-300 p-4 text-gray-900 shadow-sm sm:p-6">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="size-6">
@@ -14,6 +14,9 @@
             Browse files
         </span>
 
-        <input multiple type="file" id="File" class="sr-only" />
+        <input type="file" id="file" name="file" class="sr-only" />
     </label>
+    <div class="flex justify-end mt-2">
+        <button type="submit" class="bg-primary rounded-sm px-3 py-1.5 hover:opacity-75">Upload</button>
+    </div>
 </form>
