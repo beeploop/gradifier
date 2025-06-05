@@ -17,7 +17,7 @@ export class UserModel {
     createdAt: Date;
     updatedAt: Date;
 
-    constructor(user: TUser) {
+    private constructor(user: TUser) {
         this.id = user.id;
         this.name = user.name;
         this.email = user.email;

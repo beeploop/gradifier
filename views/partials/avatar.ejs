@@ -1,0 +1,26 @@
+<div x-data="{isOpen: false, openedWithKeyboard: false}" class="relative"
+    x-on:keydown.esc.window="isOpen = false, openedWithKeyboard = false">
+    <div class="flex cursor-pointer items-center gap-2 p-2 hover:bg-white/45" x-on:click="isOpen = !isOpen"
+        x-on:keydown.enter.prevent="openedWithKeyboard = true" x-on:keydown.down.prevent="openedWithKeyboard = true">
+        <img src="<%= user.imageUrl %>" alt="user image"
+            class="aspect-square h-10 w-10 rounded-full bg-neutral-300 outline outline-1 outline-neutral-400" />
+        <div class="text-xs font-medium">
+            <p>
+                <%= user.name || "firstname lastname" %>
+            </p>
+            <p class="text-neutral-600">
+                <%= user.email || "user@email.com" %>
+            </p>
+        </div>
+    </div>
+    <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard"
+        x-on:click.outside="isOpen = false, openedWithKeyboard = false" x-on:keydown.down.prevent="$focus.wrap().next()"
+        x-on:keydown.up.prevent="$focus.wrap().previous()" role="menu"
+        class="absolute bottom-0 left-full ml-1 flex w-fit min-w-48 flex-col rounded-sm bg-white p-2 outline-1 outline-neutral-400">
+        <a href="#" class="text-center w-full cursor-pointer hover:bg-primary/30 px-2 py-1.5">Update Avatar</a>
+        <form action="/auth/logout" method="POST">
+            <button type="submit"
+                class="w-full cursor-pointer bg-red-500/25 hover:bg-red-600/30 px-2 py-1.5 text-red-500">Logout</button>
+        </form>
+    </div>
+</div>
