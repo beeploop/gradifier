@@ -12,7 +12,6 @@
 
 .active {
     background-color: var(--color-white);
-    opacity: 0.75;
     border-radius: 0.125rem;
 }
 
