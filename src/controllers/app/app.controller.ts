@@ -1,13 +1,5 @@
 import { Request, Response } from "express";
-
-type AppPageLocals = {
-    title: string,
-    user: {
-        name: string,
-        email: string,
-        imageUrl: string,
-    },
-}
+import { PageLocals } from "../../config/type/page_locals";
 
 export class AppController {
     constructor() {
@@ -41,7 +33,7 @@ export class AppController {
     private buildLocals(req: Request, data?: object) {
         const user = req.session.user!;
 
-        const locals: AppPageLocals = {
+        const locals: PageLocals = {
             title: "Gradifier | App",
             user: {
                 name: user.name,

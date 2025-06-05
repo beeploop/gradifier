@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { AppController } from "../../controllers/app/app.controller";
 import { ensureLoggedIn } from "../../middlewares/auth.middleware";
+import { profileRouter } from "../profile/profile.route";
 
 export const appRouter = Router();
 
@@ -16,3 +17,5 @@ appRouter.get("/dashboard", controller.renderDashboard);
 appRouter.get("/reports", controller.renderReports);
 appRouter.get("/logs", controller.renderLogs);
 appRouter.get("/settings", controller.renderSettings);
+
+appRouter.use("/profile", profileRouter)
