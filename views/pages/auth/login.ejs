@@ -1,13 +1,6 @@
-<div class="grid place-items-center min-h-screen">
+<div class="grid place-items-center min-h-screen" id="main">
     <div class="min-w-sm">
-        <div>
-            <% if (Array.isArray(flash) && flash.length> 0 && flash[0].trim() !== "") { %>
-                <div class="mb-2 text-red-500 bg-red-500/25 outline outline-1 outline-red-500 rounded-sm p-2">
-                    <%= flash[0] %>
-                </div>
-                <% } %>
-        </div>
-        <form action="/auth/login" method="POST" class="outline-1 outline-neutral-400 rounded-sm p-4">
+        <form action="/auth/login" method="POST" class="outline-1 outline-neutral-400 rounded-sm p-4 bg-white">
             <div class="grid gap-4">
                 <div>
                     <label for="email">Email:</label>
@@ -25,6 +18,13 @@
                     <button type="submit"
                         class="bg-primary rounded-sm px-3 py-1.5 hover:opacity-75 cursor-pointer">Submit</button>
                 </div>
+            </div>
+            <div class="mt-4">
+                <% if (Array.isArray(flash) && flash.length> 0 && flash[0].trim() !== "") { %>
+                    <div class="mb-2 text-red-500 bg-red-500/25 outline outline-1 outline-red-500 rounded-sm p-2">
+                        <%= flash[0] %>
+                    </div>
+                    <% } %>
             </div>
         </form>
     </div>
