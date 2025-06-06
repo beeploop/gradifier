@@ -34,6 +34,7 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --color-primary: var(--color-amber-500);
+    --color-primary-light: var(--color-amber-300);
   }
 }
 @layer base {
@@ -273,6 +274,9 @@
   .h-40 {
     height: calc(var(--spacing) * 40);
   }
+  .h-screen {
+    height: 100vh;
+  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -329,6 +333,9 @@
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
+  }
+  .overflow-y-scroll {
+    overflow-y: scroll;
   }
   .rounded {
     border-radius: 0.25rem;
