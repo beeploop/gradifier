@@ -31,12 +31,12 @@ export class UserModel {
         return new UserModel(user);
     }
 
-    static createNew(name: string, email: string, password: string) {
+    static createNew(name: string, email: string, imageUrl: string, password: string) {
         return new UserModel({
             id: crypto.randomUUID(),
             name: name,
             email: email,
-            imageUrl: "",
+            imageUrl: imageUrl,
             password: password,
             createdAt: new Date(),
             updatedAt: new Date(),
