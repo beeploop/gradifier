@@ -1,8 +1,16 @@
 import { Request, Response } from "express";
 import { PageLocals } from "../../config/type/page_locals";
+import { FarmRepository } from "../../repositories/farm.repository";
+import { BananaRepository } from "../../repositories/banana.repository";
 
 export class AppController {
-    constructor() {
+    farmRepo: FarmRepository;
+    bananaRepo: BananaRepository;
+
+    constructor(farmRepo: FarmRepository, bananaRepo: BananaRepository) {
+        this.farmRepo = farmRepo;
+        this.bananaRepo = bananaRepo;
+
         this.renderDashboard = this.renderDashboard.bind(this);
         this.renderReports = this.renderReports.bind(this);
         this.renderLogs = this.renderLogs.bind(this);
