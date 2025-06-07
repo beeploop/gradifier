@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 
 type fingerSize = "s" | "r";
-type fingerClass = "33bcp" | "25bcp" | "38bcp" | "30tr" | "38tr" | "36tr";
+type fingerClass = "33BCP" | "25BCP" | "38BCP" | "30TR" | "38TR" | "36TR";
 
 
 type TBanana = {

@@ -7,7 +7,7 @@ export const bananaTable = mysqlTable("banana", {
     fingerCount: int().notNull(),
     fingerSize: mysqlEnum(["s", "r"]).default("s").notNull(),
     weight: float().notNull(),
-    fingerClass: mysqlEnum(["33bcp", "25bcp", "38bcp", "30tr", "38tr", "36tr"]).notNull(),
+    fingerClass: mysqlEnum(["33BCP", "25BCP", "38BCP", "30TR", "38TR", "36TR"]).notNull(),
     confidence: float().notNull(),
     createdAt: timestamp().notNull().defaultNow(),
 });
