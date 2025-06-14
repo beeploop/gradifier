@@ -3,14 +3,14 @@ import { AppController } from "../../controllers/app/app.controller";
 import { ensureLoggedIn } from "../../middlewares/auth.middleware";
 import { profileRouter } from "../profile/profile.route";
 import { FarmRepository } from "../../repositories/farm.repository";
-import { BananaRepository } from "../../repositories/banana.repository";
+import { HarvestRepository } from "../../repositories/harvest.repository";
 
 export const appRouter = Router();
 
 const farmRepository = new FarmRepository();
-const bananaRepository = new BananaRepository();
+const harvestRepository = new HarvestRepository();
 
-const controller = new AppController(farmRepository, bananaRepository);
+const controller = new AppController(farmRepository, harvestRepository);
 
 appRouter.use(ensureLoggedIn);
 appRouter.use((_req: Request, res: Response, next: NextFunction) => {
